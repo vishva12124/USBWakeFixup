@@ -3,7 +3,7 @@
  */
 DefinitionBlock ("", "SSDT", 2, "OSY86 ", "USBW", 0x00001000)
 {
-    External (\_SB.PCI0.XHC._PRW, MethodObj)
+    External (\_SB.PC00.XHCI, MethodObj)
 
     // We only enable the device for OSX
     If (CondRefOf (\_OSI, Local0) && _OSI ("Darwin"))
@@ -15,7 +15,7 @@ DefinitionBlock ("", "SSDT", 2, "OSY86 ", "USBW", 0x00001000)
 
             Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
             {
-                Return (\_SB.PCI0.XHC._PRW ()) // Replace with path to your USB device
+                Return (\_SB.PC00.XHCI ()) // Replace with path to your USB device
             }
         }
     }
